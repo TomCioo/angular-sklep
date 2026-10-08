@@ -1,0 +1,31 @@
+<h1>Podsumowanie zamówienia</h1>
+
+<h2>Twoje produkty:</h2>
+
+@for (product of cartService.cart; track product.id) {
+
+  <div>
+    <strong>{{ product.name }}</strong>
+
+    <p>
+      Ilość: {{ product.quantity }}
+    </p>
+
+    <p>
+      Cena: {{ product.price * product.quantity }} zł
+    </p>
+  </div>
+
+}
+
+<hr>
+
+<h2>
+  Razem: {{ cartService.getTotal() }} zł
+</h2>
+
+<a
+  routerLink="/"
+  mat-raised-button>
+  Wróć do sklepu
+</a>

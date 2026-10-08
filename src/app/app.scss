@@ -1,0 +1,43 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f4f7;
+  color: #222;
+}
+
+app-product-list,
+app-cart {
+  display: block;
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+
+.spacer {
+  flex: 1;
+}
+
+mat-toolbar {
+  margin-bottom: 30px;
+}
+
+.cart-modal {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  width: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  padding: 20px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+  z-index: 1000;
+}

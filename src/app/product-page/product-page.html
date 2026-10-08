@@ -1,0 +1,75 @@
+<div class="product">
+
+  <div class="product-image">
+
+    
+    <InnerImageZoom [src]="product!.image" />
+
+  </div>
+
+  <div class="product-info">
+
+    <h1>{{ product?.name }}</h1>
+
+    <p class="price">
+      {{ product?.price }} zł
+    </p>
+
+    <p>
+      {{ product?.description }}
+    </p>
+
+    <p class="rating">
+      ⭐ {{ product?.rating }} / 5
+    </p>
+
+    <button mat-raised-button (click)="addToCart()">
+      Dodaj do koszyka
+    </button>
+
+  </div>
+
+</div>
+
+
+<h2>Pozostałe produkty</h2>
+
+<div class="carousel">
+
+  <button
+    mat-icon-button
+    (click)="previousProduct()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+
+  <div class="carousel-product">
+
+    <img
+      [src]="otherProducts[currentIndex].image"
+      [alt]="otherProducts[currentIndex].name">
+
+    <h3>
+      {{ otherProducts[currentIndex].name }}
+    </h3>
+
+    <p>
+      {{ otherProducts[currentIndex].price }} zł
+    </p>
+
+    <a
+      mat-raised-button
+      [routerLink]="['/product', otherProducts[currentIndex].id]">
+      Zobacz produkt
+    </a>
+
+  </div>
+
+
+  <button
+    mat-icon-button
+    (click)="nextProduct()">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+
+</div>

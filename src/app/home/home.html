@@ -1,0 +1,44 @@
+<div class="home">
+
+  <h1>Sklep </h1>
+
+  <a
+    mat-raised-button
+    color="primary"
+    routerLink="/product/1">
+    Zobacz produkty
+  </a>
+
+  <h2>Nasze produkty</h2>
+
+  <div class="products">
+
+    @for (product of products; track product.id) {
+
+      <div class="product">
+
+        <img
+          [src]="product.image"
+          [alt]="product.name">
+
+        <h3>{{ product.name }}</h3>
+
+        <p>{{ product.price }} zł</p>
+
+        <p class="rating">
+          ⭐ {{ product.rating }} / 5
+        </p>
+
+        <a
+          mat-raised-button
+          [routerLink]="['/product', product.id]">
+          Zobacz produkt
+        </a>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

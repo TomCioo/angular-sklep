@@ -1,0 +1,55 @@
+<h2>KOSZYK</h2>
+
+@if (cartService.cart.length === 0) {
+
+  <p>Koszyk jest pusty</p>
+
+} @else {
+
+  @for (product of cartService.cart; track product.id) {
+
+    <div>
+
+      <span>
+        {{ product.name }} - {{ product.price }} zł
+      </span>
+
+      <span>
+
+        <button (click)="decreaseProduct(product)">
+          -
+        </button>
+
+        <strong>
+          {{ product.quantity }}
+        </strong>
+
+        <button (click)="increaseProduct(product)">
+          +
+        </button>
+
+        <button (click)="removeProduct(product)">
+          Usuń
+        </button>
+
+      </span>
+
+    </div>
+
+  }
+
+  <hr>
+
+  <p>
+    RAZEM {{ getTotal() }} zł
+  </p>
+
+
+  <a
+      mat-raised-button
+      routerLink="/payment">
+      Przejdz do platnosci
+    </a>
+ 
+
+}

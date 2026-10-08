@@ -1,0 +1,104 @@
+<h1>Płatność</h1>
+
+<form [formGroup]="paymentForm" (ngSubmit)="pay()">
+
+  <h2>Dane klienta</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Imię</mat-label>
+    <input matInput formControlName="name">
+
+    @if (paymentForm.controls.name.touched && paymentForm.controls.name.invalid) {
+      <mat-error>Podaj imię</mat-error>
+    }
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nazwisko</mat-label>
+    <input matInput formControlName="surname">
+
+    @if (paymentForm.controls.surname.touched && paymentForm.controls.surname.invalid) {
+      <mat-error>Podaj nazwisko</mat-error>
+    }
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Adres</mat-label>
+    <input matInput formControlName="address">
+
+    @if (paymentForm.controls.address.touched && paymentForm.controls.address.invalid) {
+      <mat-error>Podaj adres</mat-error>
+    }
+  </mat-form-field>
+
+
+  <h2>Forma płatności</h2>
+
+  <mat-radio-group formControlName="paymentMethod">
+
+    <mat-radio-button value="blik">
+      BLIK
+    </mat-radio-button>
+
+    <mat-radio-button value="card">
+      Karta
+    </mat-radio-button>
+
+  </mat-radio-group>
+
+
+  @if (paymentForm.value.paymentMethod === 'blik') {
+
+    <mat-form-field appearance="outline">
+      <mat-label>Kod BLIK</mat-label>
+      <input matInput formControlName="blik">
+    </mat-form-field>
+
+  }
+
+
+  @if (paymentForm.value.paymentMethod === 'card') {
+
+    <mat-form-field appearance="outline">
+      <mat-label>Numer karty</mat-label>
+      <input matInput formControlName="card">
+    </mat-form-field>
+
+  }
+
+
+  <h2>Podsumowanie</h2>
+
+  @for (product of cartService.cart; track product.id) {
+
+    <p>
+      {{ product.name }}
+      x{{ product.quantity }}
+      — {{ product.price * product.quantity }} zł
+    </p>
+
+  }
+
+  <p>
+    <strong>
+      Razem: {{ cartService.getTotal() }} zł
+    </strong>
+  </p>
+
+
+  <button mat-raised-button type="submit">
+    Zapłać
+  </button>
+
+</form>
+
+
+@if (error) {
+
+  <p class="error">
+    {{ error }}
+  </p>
+
+}
