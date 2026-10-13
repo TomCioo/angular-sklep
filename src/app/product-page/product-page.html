@@ -2,8 +2,7 @@
 
   <div class="product-image">
 
-    
-    <InnerImageZoom [src]="product!.image" />
+    <img [src]="product!.image" [alt]="product!.name">
 
   </div>
 
@@ -34,42 +33,35 @@
 
 <h2>Pozostałe produkty</h2>
 
-<div class="carousel">
+<swiper-container
+  slides-per-view="3"
+  space-between="15"
+  navigation="true">
 
-  <button
-    mat-icon-button
-    (click)="previousProduct()">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
+  @for (item of otherProducts; track item.id) {
 
+    <swiper-slide>
 
-  <div class="carousel-product">
+      <div class="carousel-product">
 
-    <img
-      [src]="otherProducts[currentIndex].image"
-      [alt]="otherProducts[currentIndex].name">
+        <img
+          [src]="item.image"
+          [alt]="item.name">
 
-    <h3>
-      {{ otherProducts[currentIndex].name }}
-    </h3>
+        <h3>{{ item.name }}</h3>
 
-    <p>
-      {{ otherProducts[currentIndex].price }} zł
-    </p>
+        <p>{{ item.price }} zł</p>
 
-    <a
-      mat-raised-button
-      [routerLink]="['/product', otherProducts[currentIndex].id]">
-      Zobacz produkt
-    </a>
+        <a
+          mat-raised-button
+          [routerLink]="['/product', item.id]">
+          Zobacz produkt
+        </a>
 
-  </div>
+      </div>
 
+    </swiper-slide>
 
-  <button
-    mat-icon-button
-    (click)="nextProduct()">
-    <mat-icon>arrow_forward</mat-icon>
-  </button>
+  }
 
-</div>
+</swiper-container>

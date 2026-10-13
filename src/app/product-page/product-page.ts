@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CartService } from '../cart.service';
 import { products } from '../products';
+import { register } from 'swiper/element/bundle';
 
+register();
 
 
 @Component({
@@ -14,6 +16,7 @@ import { products } from '../products';
     MatButtonModule,
     MatIconModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './product-page.html',
   styleUrl: './product-page.scss'
 })
@@ -38,18 +41,6 @@ export class ProductPage {
 
   get otherProducts() {
     return this.products.filter(product => product.id !== Number(this.id));
-  }
-
-  nextProduct() {
-    if (this.currentIndex < this.otherProducts.length - 1) {
-      this.currentIndex++;
-    }
-  }
-
-  previousProduct() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-    }
   }
 
   addToCart() {
