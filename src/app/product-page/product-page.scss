@@ -18,9 +18,10 @@
   max-width: 250px;
 }
 
-.product-image ::ng-deep img {
-  width: 250px !important;
-  height: auto !important;
+.product-image img {
+  width: 250px;
+  height: auto;
+  display: block;
 }
 
 .product-info {

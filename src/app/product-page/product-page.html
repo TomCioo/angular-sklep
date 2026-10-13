@@ -2,7 +2,11 @@
 
   <div class="product-image">
 
-    <img [src]="product!.image" [alt]="product!.name">
+    <div class="image-frame iiz" #zoomFrame>
+  <img
+    [src]="product!.image"
+    [alt]="product!.name">
+</div>
 
   </div>
 
