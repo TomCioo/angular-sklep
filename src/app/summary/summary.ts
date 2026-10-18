@@ -12,5 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class Summary {
 
   constructor(public cartService: CartService) {}
-
+  backToShop() {
+  this.cartService.clearCart();
+  }
 }

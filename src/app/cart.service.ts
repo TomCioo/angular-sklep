@@ -42,4 +42,8 @@ export class CartService {
       0
     );
   }
+
+  clearCart() {
+  this.cart = [];
+  }
 }
