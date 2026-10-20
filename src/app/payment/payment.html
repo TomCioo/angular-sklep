@@ -71,15 +71,28 @@
 
   <h2>Podsumowanie</h2>
 
+ <div class="cart-summary">
   @for (product of cartService.cart; track product.id) {
 
-    <p>
-      {{ product.name }}
-      x{{ product.quantity }}
-      — {{ product.price * product.quantity }} zł
-    </p>
+    <div class="cart-product">
+
+      <span>
+        {{ product.name }} —
+        {{ product.price * product.quantity }} zł
+      </span>
+
+      <div class="quantity">
+        <button mat-raised-button type="button" (click)="decreaseProduct(product)"> - </button>
+
+        <strong>{{ product.quantity }}</strong>
+
+        <button mat-raised-button type="button" (click)="increaseProduct(product)"> + </button>
+      </div>
+
+    </div>
 
   }
+</div>
 
   <p>
     <strong>

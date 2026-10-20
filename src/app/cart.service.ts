@@ -13,10 +13,7 @@ export class CartService {
     if (existing) {
       existing.quantity++;
     } else {
-      this.cart.push({
-        ...product,
-        quantity: 1
-      });
+      this.cart.push({...product,quantity: 1});
     }
   }
 

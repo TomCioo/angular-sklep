@@ -1,13 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ElementRef,
-  AfterViewInit,
-  OnDestroy,
-  PLATFORM_ID,
-  inject,
-  viewChild
-} from '@angular/core';
+import {Component,CUSTOM_ELEMENTS_SCHEMA,ElementRef,AfterViewInit,OnDestroy,PLATFORM_ID,inject,viewChild} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';

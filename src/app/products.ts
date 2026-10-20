@@ -30,5 +30,13 @@ export const products = [
     description: 'Logitech G Pro X czarne',
     image: 'https://www.logitechg.com/content/dam/gaming/en/products/pro-x/pro-headset-gallery-1.png',
     rating: 4.6
+  },
+  {
+    id: 5,
+    name: 'MacBook M5 Pro',
+    price: 7999,
+    description: 'MacBook Pro (14-calowy, M5)',
+    image: 'https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/macbook-pro-14-inch-m5.png',
+    rating: 4.8
   }
 ];

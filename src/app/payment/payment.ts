@@ -28,7 +28,7 @@ export class Payment {
     surname: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     paymentMethod: new FormControl('blik', Validators.required),
-    blik: new FormControl(''),
+    blik: new FormControl('', [Validators.pattern(/^\d{6}$/)]),
     card: new FormControl('')
   });
 
@@ -37,6 +37,18 @@ export class Payment {
     public cartService: CartService
   ) {}
 
+   increaseProduct(product: any) {
+    this.cartService.increaseProduct(product);
+  }
+
+   decreaseProduct(product: any) {
+    this.cartService.decreaseProduct(product);
+  }
+
+  getTotal() {
+    return this.cartService.getTotal();
+  }
+
   pay() {
 
   this.error = '';
@@ -44,14 +56,14 @@ export class Payment {
   const method = this.paymentForm.value.paymentMethod;
 
   if (method === 'blik') {
-    const blik = this.paymentForm.value.blik;
+  const blikControl = this.paymentForm.controls.blik;
 
-    if (!blik) {
-      this.paymentForm.controls.blik.markAsTouched();
-      this.error = 'Podaj kod BLIK.';
-      return;
-    }
+  if (!blikControl.value || blikControl.invalid) {
+    blikControl.markAsTouched();
+    this.error = 'Kod BLIK musi zawierać 6 cyfr.';
+    return;
   }
+}
 
   if (method === 'card') {
     const card = this.paymentForm.value.card;
