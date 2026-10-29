@@ -24,9 +24,9 @@ export class Payment {
   error = '';
 
   paymentForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    surname: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
+    name: new FormControl('', [ Validators.required, Validators.pattern(/^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s-]+$/)]),
+    surname: new FormControl('', [ Validators.required, Validators.pattern(/^^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s-]+$/)]),
+    address: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s,.-]+$/)]),
     paymentMethod: new FormControl('blik', Validators.required),
     blik: new FormControl('', [Validators.pattern(/^\d{6}$/)]),
     card: new FormControl('')

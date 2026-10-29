@@ -1,5 +1,4 @@
-import {Component,CUSTOM_ELEMENTS_SCHEMA,ElementRef,AfterViewInit,OnDestroy,PLATFORM_ID,inject,viewChild} from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, AfterViewInit, OnDestroy, viewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,7 +21,6 @@ export class ProductPage implements AfterViewInit, OnDestroy {
   products = products;
   id = '';
 
-  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly zoomFrame = viewChild<ElementRef<HTMLElement>>('zoomFrame');
   private zoom?: { uninit(): void };
 
@@ -48,8 +46,6 @@ export class ProductPage implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    if (!this.isBrowser) return;
-
     setTimeout(() => {
       if (!this.zoomFrame()) return;
       this.zoom = new InnerImageZoom('.image-frame.iiz') as unknown as { uninit(): void };

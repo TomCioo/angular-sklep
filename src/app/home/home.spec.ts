@@ -1,21 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { render, screen } from '@testing-library/angular';
 import { Home } from './home';
+import '@testing-library/jest-dom/vitest';
 
 describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+  it('wyświetla napis Sklep w headerze', async () => {
+    const { container } = await render(Home);
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Home],
-    }).compileComponents();
+    const header = container.querySelector('header');
 
-    fixture = TestBed.createComponent(Home);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(header).not.toBeNull();
+    expect(header).toHaveTextContent('Sklep');
   });
 });
